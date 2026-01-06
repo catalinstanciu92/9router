@@ -49,7 +49,8 @@ const defaultData = {
   combos: [],
   apiKeys: [],
   settings: {
-    cloudEnabled: false
+    cloudEnabled: false,
+    stickyRoundRobinLimit: 3
   }
 };
 
@@ -188,7 +189,8 @@ export async function createProviderConnection(data) {
     "displayName", "email", "globalPriority", "defaultModel",
     "accessToken", "refreshToken", "expiresAt", "tokenType",
     "scope", "idToken", "projectId", "apiKey", "testStatus",
-    "lastTested", "lastError", "lastErrorAt", "rateLimitedUntil", "expiresIn", "errorCode"
+    "lastTested", "lastError", "lastErrorAt", "rateLimitedUntil", "expiresIn", "errorCode",
+    "consecutiveUseCount"
   ];
   
   for (const field of optionalFields) {
@@ -480,7 +482,8 @@ export async function cleanupProviderConnections() {
     "displayName", "email", "globalPriority", "defaultModel",
     "accessToken", "refreshToken", "expiresAt", "tokenType",
     "scope", "idToken", "projectId", "apiKey", "testStatus",
-    "lastTested", "lastError", "lastErrorAt", "rateLimitedUntil", "expiresIn"
+    "lastTested", "lastError", "lastErrorAt", "rateLimitedUntil", "expiresIn",
+    "consecutiveUseCount"
   ];
 
   let cleaned = 0;
